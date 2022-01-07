@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/settings_coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@color/black"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:expanded="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="#121111"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/curr_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Current Location"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fav_cv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/curr_location"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        app:cardCornerRadius="20dp">
+
+                        <RelativeLayout
+                            android:id="@+id/curr_location_rl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#303030"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/curr_location_perm1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Capital - "
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/curr_location_cap"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toEndOf="@id/curr_location_perm1"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                tools:text="Delhi" />
+
+                            <TextView
+                                android:id="@+id/curr_location_perm2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/curr_location_perm1"
+                                android:layout_marginTop="5dp"
+                                android:text="Country - "
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/curr_location_country"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/curr_location_perm1"
+                                android:layout_marginTop="5dp"
+                                android:layout_toEndOf="@id/curr_location_perm2"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                tools:text="India" />
+
+                            <TextView
+                                android:id="@+id/perm3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/curr_location_perm2"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="15dp"
+                                android:text="Press long to change current location?"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00072C"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/recycler_view_background"
+                android:padding="5dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/saved_loc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Saved Locations"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <ListView
+                    android:id="@+id/lv_favorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="700dp"
+                    android:layout_below="@id/saved_loc"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="5sp"
+                    android:nestedScrollingEnabled="true"
+                    android:padding="10dp"
+                    tools:listitem="@layout/list_item_database" />
+
+                <RelativeLayout
+                    android:id="@+id/empty_rl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/empty_database" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/img"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Get started by adding your favorite locations"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

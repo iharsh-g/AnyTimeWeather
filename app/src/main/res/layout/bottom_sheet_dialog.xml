@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bottom_sheet_tv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Today Weather"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/bottom_sheet_tv_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_sheet_tv_1"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Tomorrow Weather"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/bottom_sheet_tv_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_sheet_tv_2"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Day After Tomorrow Weather"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/bottom_sheet_tv_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_sheet_tv_3"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Cancel"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"/>
+
+</RelativeLayout>

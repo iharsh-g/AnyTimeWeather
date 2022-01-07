@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.AnyTimeWeather.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:theme="@style/Theme.AnyTimeWeather.AppWidgetContainer">
+
+        <RelativeLayout
+            android:id="@+id/widget_rl"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_centerHorizontal="true"
+            android:background="#1C1C1C"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/widget_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                tools:text="Fri, December 3"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/widget_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_date"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                tools:text="04:13 PM"
+                android:textSize="30sp"/>
+
+            <RelativeLayout
+                android:id="@+id/widget_sub_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_time"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/widget_img"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/widget_temp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/widget_img"
+                    android:textColor="@color/white"
+                    android:textSize="38sp"
+                    tools:text="21" />
+
+                <TextView
+                    android:id="@+id/widget_temp1_o"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/widget_temp1"
+                    android:text="o"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/widget_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_sub_rl"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                tools:text="Delhi, India"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/widget_feels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_region"
+                android:layout_marginTop="20dp"
+                android:text="Feels Like:"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/widget_temp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_region"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/widget_feels"
+                tools:text="21"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/widget_temp2_o"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_region"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/widget_temp2"
+                android:textSize="6sp"
+                android:text="o"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/widget_uv_img"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/widget_region"
+                android:layout_marginTop="15dp"
+                android:layout_toStartOf="@id/widget_uv"
+                android:src="@drawable/uv_index" />
+
+            <TextView
+                android:id="@+id/widget_uv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_region"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-5dp"
+                android:layout_marginTop="20dp"
+                tools:text="3.0"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/sync"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/widget_uv"
+                android:src="@drawable/ic_sync"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+
+</RelativeLayout>

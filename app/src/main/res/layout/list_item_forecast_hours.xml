@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="110dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2.5dp"
+    android:layout_marginRight="2.5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:backgroundTint="#303030">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/hourly_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="#A6A4A4"
+                android:textSize="12sp"
+                tools:text="01:00 AM" />
+
+            <ImageView
+                android:id="@+id/iv_hours"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/hourly_time"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="5dp"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hourly_time"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/iv_hours"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="25.2" />
+
+            <TextView
+                android:id="@+id/degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/temp"
+                android:layout_below="@id/hourly_time"
+                android:layout_marginTop="14dp"
+                android:textColor="@color/white"
+                android:text="o"
+                android:textSize="6sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_hours">
+
+                <ImageView
+                    android:id="@+id/rain_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/rain" />
+
+                <TextView
+                    android:id="@+id/rain_hourly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/rain_iv"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    tools:text="80" />
+
+                <TextView
+                    android:id="@+id/percent_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_toEndOf="@id/rain_hourly"
+                    android:text="%"
+                    android:textSize="10sp"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/snow_iv"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/percent_hours"
+                    android:src="@drawable/snow" />
+
+                <TextView
+                    android:id="@+id/snow_hourly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="2dp"
+                    android:layout_toEndOf="@id/snow_iv"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    tools:text="80" />
+
+                <TextView
+                    android:id="@+id/percent_hours_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:layout_toEndOf="@id/snow_hourly"
+                    android:text="%"
+                    android:textSize="10sp"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

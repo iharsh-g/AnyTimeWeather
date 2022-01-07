@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2.5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2.5dp"
+        app:cardCornerRadius="7dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_searched_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#575757">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/search_rl_all_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/location_open_map"
+                    android:background="?selectableItemBackground"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:id="@+id/location_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="20dp"
+                        android:fontFamily="sans-serif"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:text="Connaught Place, Delhi, India" />
+
+                    <View
+                        android:id="@+id/search_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/location_name"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:id="@+id/location_capital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/search_view"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="#B8AEAE"
+                        android:textSize="16sp"
+                        tools:text="Delhi" />
+
+                    <TextView
+                        android:id="@+id/location_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/location_capital"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="#B8AEAE"
+                        android:textSize="16sp"
+                        tools:text="India" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/location_open_map"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/location" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

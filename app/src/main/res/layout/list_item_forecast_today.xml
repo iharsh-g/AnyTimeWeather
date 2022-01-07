@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#303030"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:id="@+id/forecast_rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/forecast_today_capital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toStartOf="@id/tv_updated_date"
+                android:fontFamily="baskerville"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                tools:text="Capital"
+
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit ="marquee_forever"/>
+
+            <TextView
+                android:id="@+id/forecast_today_country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/forecast_today_capital"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:fontFamily="baskerville"
+                android:textColor="#8A8A8A"
+                android:textSize="14sp"
+                tools:text="Country" />
+
+            <TextView
+                android:id="@+id/tv_updated_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:text="2021-11-19" />
+
+            <TextView
+                android:id="@+id/tv_updated_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_updated_date"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:text="15:12" />
+
+            <RelativeLayout
+                android:id="@+id/temp_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/forecast_today_country"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/forecast_today_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="64dp"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/forecast_today_max_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/forecast_today_iv"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    tools:text="26.3" />
+
+                <TextView
+                    android:id="@+id/dot_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/forecast_today_max_temp"
+                    android:text="o"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/forecast_today_min_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/dot_1"
+                    android:textColor="#8A8A8A"
+                    android:textSize="40sp"
+                    tools:text="26.3" />
+
+                <TextView
+                    android:id="@+id/dot_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/forecast_today_min_temp"
+                    android:text="o"
+                    android:textColor="#8A8A8A"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/humidity_rl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/temp_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/humidity_img"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/humidity" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/humidity_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Average humidity"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_humidity_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/percent"
+                    android:textColor="@color/white"
+                    tools:text="34" />
+
+                <TextView
+                    android:id="@+id/percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" %"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/precipitation_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/humidity_rl">
+
+                <ImageView
+                    android:id="@+id/precipitation_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/precipitation" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/precipitation_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Average precipitation"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_precipitation_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/mm"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/mm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" mm"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rain_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/precipitation_rl">
+
+                <ImageView
+                    android:id="@+id/rain_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/rain" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/rain_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Rain chance"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_rain_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/tv_percent_1"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_percent_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" %"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/snow_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rain_rl">
+
+                <ImageView
+                    android:id="@+id/snow_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/snow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_toEndOf="@id/snow_img"
+                    android:fontFamily="baskerville"
+                    android:text="Snow chance"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_snow_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/tv_percent_2"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/tv_percent_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" %"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#303030"
+        app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:id="@+id/forecast_rl_asto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:id="@+id/sunrise_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/sunrise_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/sunrise" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/sunrise_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Sunrise"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_sunrise_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/sunset_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sunrise_rl">
+
+                <ImageView
+                    android:id="@+id/sunset_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/sunset" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/sunset_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Sunset"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_sunset_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/moonrise_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sunset_rl">
+
+                <ImageView
+                    android:id="@+id/moonrise_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/moonrise" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/moonrise_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Moonrise"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_moonrise_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/moonset_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/moonrise_rl">
+
+                <ImageView
+                    android:id="@+id/moonset_img"
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/moonset" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/moonset_img"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:fontFamily="baskerville"
+                    android:text="Moonset"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_moonset_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast_rv_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cv_2"
+        android:layout_margin="16dp" />
+
+</RelativeLayout>

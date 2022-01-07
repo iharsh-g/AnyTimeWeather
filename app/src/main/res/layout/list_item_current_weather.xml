@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/current_weather_cv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#303030"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <RelativeLayout
+                android:id="@+id/current_weather_rl_1"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_feels_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="times new roman"
+                    android:text="Feels like"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/temp_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_feels_like"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="times new roman"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    tools:text="24.2" />
+
+                <TextView
+                    android:id="@+id/temp_2_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_feels_like"
+                    android:layout_toEndOf="@id/temp_2"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="times new roman"
+                    android:textColor="@color/white"
+                    android:textSize="8sp"
+                    android:text="o" />
+
+                <TextView
+                    android:id="@+id/local_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="2021-11-19" />
+
+                <TextView
+                    android:id="@+id/local_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/local_date"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="15:12" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/current_weather_rl_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/current_weather_rl_1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="-10dp">
+
+                <ImageView
+                    android:id="@+id/current_weather_condition_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="64dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/temp_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/current_weather_condition_icon"
+                    android:fontFamily="times new roman"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    tools:text="24.0" />
+
+                <TextView
+                    android:id="@+id/temp_dot"
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/temp_1"
+                    android:text="o"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/current_weather_rl_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/current_weather_rl_2">
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/current_weather_location"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="35dp"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:layout_marginStart="50dp"-->
+<!--                    android:background="?selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/location" />-->
+
+                <TextView
+                    android:id="@+id/current_weather_capital"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="baskerville"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:paddingTop="10dp"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    tools:text="Delhiiiiiii" />
+
+                <TextView
+                    android:id="@+id/current_weather_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/current_weather_capital"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="baskerville"
+                    android:textColor="#B3B3B3"
+                    android:textSize="14sp"
+                    tools:text="Country" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/current_weather_cv_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#303030"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <RelativeLayout
+                android:id="@+id/uv_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/uv_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/uv_index" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/uv_image"
+                    android:fontFamily="baskerville"
+                    android:text="UV index"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/uv_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="8.0" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/wind_speed_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/uv_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/wind_speed_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/wind_speed" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/wind_speed_image"
+                    android:fontFamily="baskerville"
+                    android:text="Wind Speed"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/wind_speed_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/km_p_hr"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="6.1" />
+
+                <TextView
+                    android:id="@+id/km_p_hr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" km/hr"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/wind_dir_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wind_speed_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/wind_dir_image"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/wind_direction" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/wind_dir_image"
+                    android:fontFamily="baskerville"
+                    android:text="Wind Direction"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/wind_dir_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="WSW" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pressure_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/wind_dir_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/pressure_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/pressure" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/pressure_img"
+                    android:fontFamily="baskerville"
+                    android:text="Pressure"
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/pressure_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/mb"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="1010.0" />
+
+                <TextView
+                    android:id="@+id/mb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" mb"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/precipitation_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pressure_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/precipitation_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/precipitation" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/precipitation_img"
+                    android:fontFamily="baskerville"
+                    android:text="Precipitation"
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/precipitation_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/mm"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="0.0" />
+
+                <TextView
+                    android:id="@+id/mm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" mm"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/humidity_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/precipitation_rl"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/humidity_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/humidity" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/humidity_img"
+                    android:fontFamily="baskerville"
+                    android:text="Humidity"
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/humidity_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/percent"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="34" />
+
+                <TextView
+                    android:id="@+id/percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" %"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cloud_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/humidity_rl"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/cloud_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/clouds" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toEndOf="@id/cloud_img"
+                    android:fontFamily="baskerville"
+                    android:text="Clouds"
+                    android:textColor="@color/white"
+                    android:textSize="13.5sp" />
+
+                <TextView
+                    android:id="@+id/cloud_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/percent_1"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="34" />
+
+                <TextView
+                    android:id="@+id/percent_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" %"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/current_weather_cv_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#303030"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:id="@+id/air_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="baskerville"
+                android:text="Air Quality"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/pm_2_5_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/air_quality"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="baskerville"
+                    android:text="	PM2.5"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/pm_2_5_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/pm_2_5_sign"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="34" />
+
+                <TextView
+                    android:id="@+id/pm_2_5_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" μg/m3"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pm_10_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pm_2_5_rl"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="baskerville"
+                    android:text="	PM10"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/pm_10_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/pm_10_sign"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    tools:text="34." />
+
+                <TextView
+                    android:id="@+id/pm_10_sign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:text=" μg/m3"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/us_index_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/pm_10_rl"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="baskerville"
+                    android:text="EPA Index"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/us_index_val"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="baskerville"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="5" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/current_weather_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="3dp"
+        android:background="?selectableItemBackground"
+        android:text="Location"
+        android:textColor="#A08CE1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_3"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toStartOf="@id/updated_date"
+        android:text="Updated "
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/updated_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_3"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="4dp"
+        android:layout_toStartOf="@id/updated_time"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:text="2021-11-19" />
+
+    <TextView
+        android:id="@+id/updated_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/current_weather_cv_3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:text="15:45" />
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/settings_coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@color/black"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:expanded="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="#121111"
+                app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/tab_background"
+                    android:paddingBottom="2dp"
+                    app:tabGravity="fill"
+                    app:tabIconTintMode="screen"
+                    app:tabIndicator="@drawable/tab_indicator"
+                    app:tabIndicatorAnimationMode="elastic"
+                    app:tabIndicatorGravity="stretch"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabMaxWidth="0dp"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextColor="#BABCBC">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/fragment1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current  Weather" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/fragment2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Forecast Weather" />
+
+                </com.google.android.material.tabs.TabLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>
