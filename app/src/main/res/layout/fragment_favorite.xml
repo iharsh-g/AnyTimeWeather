@@ -105,7 +105,7 @@
                                 android:layout_below="@id/curr_location_perm2"
                                 android:layout_centerHorizontal="true"
                                 android:layout_marginTop="15dp"
-                                android:text="Press long to change current location?"
+                                android:text="Press long to change current location."
                                 android:textColor="@color/white"
                                 android:textSize="16sp" />
                         </RelativeLayout>
@@ -123,7 +123,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:background="@drawable/recycler_view_background"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:layout_height="match_parent">
 
                 <TextView
@@ -135,15 +135,11 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <ListView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/lv_favorite"
                     android:layout_width="match_parent"
-                    android:layout_height="700dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/saved_loc"
-                    android:divider="@android:color/transparent"
-                    android:dividerHeight="5sp"
-                    android:nestedScrollingEnabled="true"
-                    android:padding="10dp"
                     tools:listitem="@layout/list_item_database" />
 
                 <RelativeLayout

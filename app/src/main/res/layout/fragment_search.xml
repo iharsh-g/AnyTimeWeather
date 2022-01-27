@@ -28,7 +28,7 @@
             android:completionThreshold="1"
             android:imeOptions="actionSearch"
             android:textColor="@color/white"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:dropDownAnchor="@id/view"/>
 
         <View

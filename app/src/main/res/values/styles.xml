@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
+        <item name="actionModeBackground">@color/purple_500</item>
     </style>
 
     <style name="Theme.AnyTimeWeather.AppWidgetContainer" parent="Theme.AnyTimeWeather.AppWidgetContainerParent" />

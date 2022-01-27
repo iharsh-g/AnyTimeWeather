@@ -52,7 +52,6 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
 
     @Override
     public void onBindViewHolder(@NonNull SearchLocationViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        //Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.animation_1);
         SearchLocation currentItem = mSearchLocationArrayList.get(position);
         String name = currentItem.getSearchName();
         if (name.contains(",")) {
@@ -76,8 +75,6 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
             holder.itemView.setAnimation(animation);
             lastPos = position;
         }
-
-
     }
 
     @Override

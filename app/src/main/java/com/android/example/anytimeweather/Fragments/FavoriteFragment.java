@@ -20,10 +20,11 @@ import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,10 +34,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.example.anytimeweather.Activities.MainActivity;
 import com.android.example.anytimeweather.Adapters.FavoriteDatabaseAdapter;
 import com.android.example.anytimeweather.Database.FavoriteData;
+import com.android.example.anytimeweather.Models.MainViewModel;
 import com.android.example.anytimeweather.R;
 import com.android.example.anytimeweather.Database.RoomDB;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -52,11 +60,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapter.ItemClicked {
+public class FavoriteFragment extends Fragment {
 
-    public FavoriteFragment(){
-
-    }
+    public FavoriteFragment(){    }
 
     private FusedLocationProviderClient client;
 
@@ -65,10 +71,7 @@ public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapte
     private FavoriteDatabaseAdapter mAdapter;
     private SharedPreferences sharedPreferences;
 
-    private int position;
-    private ActionMode mActionMode;
-
-    private FavoriteData data;
+    private RelativeLayout mRl;
 
     @Nullable
     @Override
@@ -77,35 +80,36 @@ public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapte
         SharedPreferences sharedPreferencesDatabase = requireContext().getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
 
         View view = inflater.inflate(R.layout.fragment_favorite, container, false);
-        ListView listView = view.findViewById(R.id.lv_favorite);
+        RecyclerView recyclerView = view.findViewById(R.id.lv_favorite);
         TextView mCurrentCapital = view.findViewById(R.id.curr_location_cap);
         TextView mCurrentCountry = view.findViewById(R.id.curr_location_country);
-        RelativeLayout relativeLayout = view.findViewById(R.id.empty_rl);
+        mRl = view.findViewById(R.id.empty_rl);
         RelativeLayout mCurrentLocationLayout = view.findViewById(R.id.curr_location_rl);
 
-        listView.setVisibility(View.VISIBLE);
-        relativeLayout.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+        mRl.setVisibility(View.GONE);
 
         database = RoomDB.getDatabase(getContext());
         dataList = (ArrayList<FavoriteData>) database.favoriteDao().getAll();
 
         if(dataList.isEmpty()){
-            listView.setVisibility(View.GONE);
-            relativeLayout.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+            mRl.setVisibility(View.VISIBLE);
         }
 
-        mAdapter = new FavoriteDatabaseAdapter(getActivity(), dataList, this);
-        listView.setAdapter(mAdapter);
+        mAdapter = new FavoriteDatabaseAdapter(getActivity(), getContext(), dataList);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mCurrentCapital.setText(sharedPreferences.getString("gpsCapitalName", "Give permission for GPS"));
         mCurrentCountry.setText(sharedPreferences.getString("gpsCountryName", "Give permission for GPS"));
 
         client = LocationServices.getFusedLocationProviderClient(getActivity());
-        mCurrentLocationLayout.setOnClickListener(new View.OnClickListener() {
+        mCurrentLocationLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+            public boolean onLongClick(View v) {
                 getAccess();
+                return true;
             }
         });
 
@@ -115,9 +119,9 @@ public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapte
             mCurrentLocationLayout.setBackgroundColor(Color.parseColor("#303030"));
         }
 
-        mCurrentLocationLayout.setOnLongClickListener(new View.OnLongClickListener() {
+        mCurrentLocationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 SharedPreferences.Editor editor = sharedPreferencesDatabase.edit();
                 editor.putString("capitalName", sharedPreferences.getString("gpsCapitalName", "Give permission for GPS"));
                 editor.putString("countryName", sharedPreferences.getString("gpsCountryName", "Give permission for GPS"));
@@ -131,7 +135,6 @@ public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapte
                         .replace(R.id.frag_container, fragment, "Restart Fragment")
                         .addToBackStack(null)
                         .commit();
-                return true;
             }
         });
 
@@ -261,82 +264,5 @@ public class FavoriteFragment extends Fragment implements FavoriteDatabaseAdapte
         dataList.clear();
         dataList.addAll(database.favoriteDao().getAll());
         mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onItemClicked(int pos) {
-        if(mActionMode != null){
-            mActionMode = null;
-        }
-        position = pos;
-        mActionMode = getActivity().startActionMode(mActionModeCallback);
-    }
-
-    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
-        @Override
-        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            mode.getMenuInflater().inflate(R.menu.action_bar_favorite_fragment, menu);
-            return true;
-        }
-
-        @Override
-        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            return false;
-        }
-
-        @Override
-        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-            if(item.getItemId() == R.id.delete){
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setIcon(android.R.drawable.ic_dialog_alert);
-                builder.setTitle("Do you want to delete?");
-                builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
-                        database = RoomDB.getDatabase(getContext());
-                        FavoriteData favoriteData = dataList.get(position);
-
-                        if(sharedPreferences1.getInt("locId", -1) == favoriteData.getLocationId()){
-                            SharedPreferences.Editor editor = sharedPreferences1.edit();
-                            editor.putString("capitalName", "");
-                            editor.putString("countryName", "");
-                            editor.putInt("locId", -1);
-                            editor.apply();
-                        }
-
-                        database.favoriteDao().delete(favoriteData.getLocationId());
-                        dataList.remove(position);
-                        mAdapter.notifyDataSetChanged();
-                    }
-                });
-                builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                builder.show();
-                mode.finish();
-                return true;
-            }
-            return false;
-        }
-
-        @Override
-        public void onDestroyActionMode(ActionMode mode) {
-            mActionMode = null;
-        }
-    };
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        if(mActionMode != null){
-            mActionMode.finish();
-            mActionMode = null;
-        }
     }
 }

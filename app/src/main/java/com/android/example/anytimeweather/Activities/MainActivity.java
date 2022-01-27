@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.example.anytimeweather.Adapters.FavoriteDatabaseAdapter;
 import com.android.example.anytimeweather.Fragments.FavoriteFragment;
 import com.android.example.anytimeweather.Fragments.HomeFragment;
 import com.android.example.anytimeweather.Fragments.SearchFragment;
@@ -48,12 +49,21 @@ public class MainActivity extends AppCompatActivity{
                 Fragment currentFragment = null;
                 switch (item.getId()){
                     case 1:
+                        if(FavoriteDatabaseAdapter.mActionMode != null) {
+                            FavoriteDatabaseAdapter.mActionMode.finish();
+                        }
                         currentFragment = new HomeFragment();
                         break;
                     case 2:
+                        if(FavoriteDatabaseAdapter.mActionMode != null) {
+                            FavoriteDatabaseAdapter.mActionMode.finish();
+                        }
                         currentFragment = new SearchFragment();
                         break;
                     case 3:
+                        if(FavoriteDatabaseAdapter.mActionMode != null) {
+                            FavoriteDatabaseAdapter.mActionMode.finish();
+                        }
                         currentFragment = new FavoriteFragment();
                         break;
                 }
@@ -76,6 +86,7 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
         });
+
         meowBottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
             @Override
             public void onReselectItem(MeowBottomNavigation.Model item) {
