@@ -1,36 +1,27 @@
 package com.android.example.anytimeweather.Fragments;
 
-import android.Manifest;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Looper;
-import android.provider.Settings;
 import android.util.Log;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.example.anytimeweather.Adapters.CurrentWeatherAdapter;
-import com.android.example.anytimeweather.Map;
 import com.android.example.anytimeweather.Models.CurrentWeather;
 import com.android.example.anytimeweather.R;
 import com.android.volley.Request;
@@ -39,21 +30,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
 public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, CurrentWeatherAdapter.CurrentLocationClicked {
 
@@ -67,9 +49,9 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
     private ProgressBar mProgressBar;
     private CurrentWeatherAdapter mCurrentWeatherAdapter;
 
-    private FusedLocationProviderClient client;
-
     private SharedPreferences sharedPreferences, sharedPreferences2;
+
+    private TextView mEmptyTv;
 
     @Nullable
     @Override
@@ -80,9 +62,11 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
         sharedPreferences2 = requireContext().getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
 
         mCurrentList = new ArrayList<>();
-        mRecyclerView = view.findViewById(R.id.rv_current);
+        mEmptyTv = view.findViewById(R.id.emptyTV);
         mProgressBar = view.findViewById(R.id.pb_current);
         mSwipe = (SwipeRefreshLayout) view.findViewById(R.id.refresh_current);
+
+        mRecyclerView = view.findViewById(R.id.rv_current);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
         mCurrentWeatherAdapter = new CurrentWeatherAdapter(getContext(), mCurrentList, this);
 
@@ -91,134 +75,11 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
 
         mQueue = Volley.newRequestQueue(requireContext());
 
-        client = LocationServices.getFusedLocationProviderClient(getActivity());
-        if (sharedPreferences.getString("gpsLat", "").equals("")) {
-            if (ContextCompat.checkSelfPermission(getActivity()
-                    , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-                getCurrentLocation();
-            } else {
-                //When permission is denied
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
-            }
-        }
-
         mSwipe.setOnRefreshListener(this);
+
+        mRecyclerView.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
         return view;
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if(requestCode == 100 && (grantResults.length > 0) &&
-                (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
-            getCurrentLocation();
-        } else {
-            Toast.makeText(getActivity(), "Permission Denied", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private void getCurrentLocation() {
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-
-        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
-        || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
-
-            client.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    //Initialize Location
-                    Location location = task.getResult();
-                    if (location != null) {
-
-                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                        try {
-                            List<Address> addresses = geocoder.getFromLocation(
-                                    location.getLatitude(), location.getLongitude(), 1);
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("gpsCapitalName", addresses.get(0).getAdminArea());
-                            editor.putString("gpsCountryName", addresses.get(0).getCountryName());
-                            Log.e("gpsCapitalName", addresses.get(0).getAdminArea() + "");
-                            Log.e("gpsCountryName", "" + addresses.get(0).getCountryName());
-                            editor.apply();
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("gpsLat", Double.toString(location.getLatitude()));
-                        editor.putString("gpsLon", Double.toString(location.getLongitude()));
-                        editor.apply();
-                        Log.e("gpsLat", location.getLatitude() + "");
-                        Log.e("gpsLon", "" + location.getLongitude());
-
-                    } else {
-                        LocationRequest locationRequest = new LocationRequest()
-                                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                                .setInterval(1000)
-                                .setFastestInterval(1000)
-                                .setNumUpdates(1);
-
-                        LocationCallback locationCallback = new LocationCallback() {
-                            @Override
-                            public void onLocationResult(@NonNull LocationResult locationResult) {
-                                Location location1 = locationResult.getLastLocation();
-
-                                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                                try {
-                                    List<Address> addresses = geocoder.getFromLocation(
-                                            location1.getLatitude(), location1.getLongitude(), 1);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                    editor.putString("gpsCapitalName", addresses.get(0).getAdminArea());
-                                    editor.putString("gpsCountryName", addresses.get(0).getCountryName());
-                                    Log.e("gpsCapitalName", addresses.get(0).getAdminArea() + "");
-                                    Log.e("gpsCountryName", "" + addresses.get(0).getCountryName());
-                                    editor.apply();
-
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("gpsLat", Double.toString(location1.getLatitude()));
-                                editor.putString("gpsLon", Double.toString(location1.getLongitude()));
-                                editor.apply();
-                                Log.e("gpsLat", location1.getLatitude() + "");
-                                Log.e("gpsLon", "" + location1.getLongitude());
-                            }
-                        };
-
-                        client.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
-                    }
-                }
-            });
-
-            if(sharedPreferences.getString("gpsLat", "").equals("")){
-                Toast.makeText(getActivity(), "Swipe down to refresh!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                mRecyclerView.setVisibility(View.GONE);
-                mProgressBar.setVisibility(View.VISIBLE);
-                jsonParse();
-            }
-
-        } else {
-            startActivityForResult(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK), 1);
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
-            getCurrentLocation();
-        }
     }
 
     void jsonParse(){
@@ -277,6 +138,7 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
 
                             mProgressBar.setVisibility(View.GONE);
                             mRecyclerView.setVisibility(View.VISIBLE);
+                            mEmptyTv.setVisibility(View.GONE);
                             mSwipe.setRefreshing(false);
                             CurrentWeather currentWeather = new CurrentWeather(
                                     capital, country, local_date_and_time, updated_date_and_time, wind_dir, icon,
@@ -284,13 +146,15 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
                                                 pm2_5, pm10, humidity, cloud, index, lat, lon);
                             mCurrentList.add(currentWeather);
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            mEmptyTv.setVisibility(View.VISIBLE);
+                            mProgressBar.setVisibility(View.GONE);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                mEmptyTv.setVisibility(View.VISIBLE);
+                mProgressBar.setVisibility(View.GONE);
             }
         });
 
@@ -300,20 +164,38 @@ public class CurrentWeatherFragment extends Fragment implements SwipeRefreshLayo
     @Override
     public void onRefresh() {
         mRecyclerView.setVisibility(View.GONE);
+        mEmptyTv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mCurrentList.clear();
         mCurrentWeatherAdapter.notifyDataSetChanged();
-        jsonParse();
+
+        if(!sharedPreferences.getString("gpsLat", "").equals("")) {
+            jsonParse();
+        }
+        else {
+            mEmptyTv.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
+            mSwipe.setRefreshing(false);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mRecyclerView.setVisibility(View.GONE);
+        mEmptyTv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mCurrentList.clear();
         mCurrentWeatherAdapter.notifyDataSetChanged();
-        jsonParse();
+
+        if(!sharedPreferences.getString("gpsLat", "").equals("")) {
+            jsonParse();
+        }
+        else {
+            mEmptyTv.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
+            mSwipe.setRefreshing(false);
+        }
     }
 
     @Override

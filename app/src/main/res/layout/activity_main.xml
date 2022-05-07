@@ -5,22 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include android:id="@+id/action_bar_app"
+        layout="@layout/action_bar"/>
+
     <FrameLayout
         android:id="@+id/frag_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/action_bar_app"
         android:layout_above="@id/bottom_nav" />
 
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:mbn_backgroundBottomColor="#152373"
-        app:mbn_circleColor="@color/white"
-        app:mbn_countTextColor="@color/white"
-        app:mbn_defaultIconColor="@color/white"
-        app:mbn_selectedIconColor="#3C415E"
-        app:mbn_shadowColor="@color/black"
-        app:mbn_rippleColor="#2F424242" />
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/bottom_nav_menu_background"
+        app:itemTextColor="@color/bottom_nav_menu_background"
+        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" />
 </RelativeLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@color/purple_500">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/action_bar_app_icon"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/weather_app_icon" />
+
+        <TextView
+            android:id="@+id/action_bar_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="-10dp"
+            android:layout_toEndOf="@id/action_bar_app_icon"
+            android:fontFamily="@font/new_rocker"
+            android:padding="10dp"
+            android:text="Any Time Weather"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/action_bar_app_icon_add"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/action_bar_app_icon_more"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add_location" />
+
+        <ImageView
+            android:id="@+id/action_bar_app_icon_more"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_more_vert" />
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>

@@ -13,7 +13,6 @@
             android:id="@+id/rv_current"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/recycler_view_background"
             android:visibility="gone" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -23,5 +22,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/emptyTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Turn on the location from Settings or select the location form FAVORITES!!"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textAlignment="center"/>
 
 </RelativeLayout>

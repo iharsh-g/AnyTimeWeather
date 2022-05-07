@@ -64,12 +64,6 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
 
         holder.mCountry.setText(currentItem.getSearchCountry());
 
-        if ((position%2) == 0) {
-            holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.gradient_1));
-        } else {
-            holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.gradient_4));
-        }
-
         if(position > lastPos){
             Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.animation_1);
             holder.itemView.setAnimation(animation);
@@ -87,7 +81,6 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
         private TextView mName, mCapital, mCountry;
         private ImageView mMaps;
         private RelativeLayout mLayout;
-        private RelativeLayout mRelativeLayout;
 
         public SearchLocationViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -96,7 +89,6 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
             mCountry = itemView.findViewById(R.id.location_country);
             mMaps = itemView.findViewById(R.id.location_open_map);
             mLayout = itemView.findViewById(R.id.search_rl_all_text);
-            mRelativeLayout = itemView.findViewById(R.id.rl_searched_items);
 
             mMaps.setOnClickListener(new View.OnClickListener() {
                 @Override

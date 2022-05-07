@@ -1,5 +1,6 @@
 package com.android.example.anytimeweather.Fragments;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -51,7 +51,6 @@ public class HomeFragment extends Fragment {
         CategoryAdapter adapter = new CategoryAdapter(getContext(), getChildFragmentManager(), tab.getTabCount());
         viewPager.setAdapter(adapter);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
         return view;
     }
 }

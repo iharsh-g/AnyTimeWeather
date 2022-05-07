@@ -18,7 +18,7 @@
             android:id="@+id/rl_searched_items"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#575757">
+            android:background="@drawable/gradient_3">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="20dp"
-                        android:textColor="#B8AEAE"
+                        android:textColor="#605D5D"
                         android:textSize="16sp"
                         tools:text="Delhi" />
 
@@ -74,7 +74,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="20dp"
-                        android:textColor="#B8AEAE"
+                        android:textColor="#656262"
                         android:textSize="16sp"
                         tools:text="India" />
                 </RelativeLayout>

@@ -149,7 +149,7 @@ public class SearchedWeatherActivity extends AppCompatActivity {
         mDatabase.favoriteDao().insert(data);
 
         fab.setImageResource(R.drawable.ic_without_border_favorite);
-        Snackbar.make(mRecyclerView, "Added to Favourites", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(fab, "Added to Favourites", Snackbar.LENGTH_SHORT).show();
     }
 
     void remFav(){
@@ -165,6 +165,6 @@ public class SearchedWeatherActivity extends AppCompatActivity {
 
         mDatabase.favoriteDao().delete(getIntent().getExtras().getInt("locId"));
         fab.setImageResource(R.drawable.ic_favorite_border);
-        Snackbar.make(mRecyclerView, "Removed from Favourites", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(fab, "Removed from Favourites", Snackbar.LENGTH_SHORT).show();
     }
 }

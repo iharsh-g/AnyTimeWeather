@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,8 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
 
     private SharedPreferences sharedPreferences, sharedPreferences2;
 
+    private TextView mEmptyTv;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
 
         sharedPreferences = getContext().getSharedPreferences("pref", Context.MODE_PRIVATE);
         sharedPreferences2 = getContext().getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
+
+        mEmptyTv = view.findViewById(R.id.emptyTV);
 
         mForecastList = new ArrayList<>();
 
@@ -135,6 +140,9 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
             }
         });
 
+        mRecyclerView.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+
         mSwipe.setOnRefreshListener(this);
         return view;
     }
@@ -172,6 +180,7 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
 
                             ArrayList<ForecastWeatherHourly> arrayList = new ArrayList<>();
                             for(int i=0;i<=forecastDay.length();i++){
+                                Log.e("FWF", "aa rha h");
                                 if(i == j){
                                     JSONObject currentDay = forecastDay.getJSONObject(j);
                                     JSONObject currentDayOb = currentDay.getJSONObject("day");
@@ -211,9 +220,10 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
                                 }
                             }
 
-                            mSwipe.setRefreshing(false);
                             mProgressBar.setVisibility(View.GONE);
                             mRecyclerView.setVisibility(View.VISIBLE);
+                            mEmptyTv.setVisibility(View.GONE);
+                            mSwipe.setRefreshing(false);
                             ForecastWeatherToday forecastToday = new ForecastWeatherToday(capital, country, updated_dataAndTime, icon, sunrise, sunset, moonrise, moonSet,
                                     maxCel, minCel, maxFeh, minFeh, precipitation,
                                     humidity, rain, snow, arrayList);
@@ -221,13 +231,15 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
                             mForecastList.add(forecastToday);
 
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            mEmptyTv.setVisibility(View.VISIBLE);
+                            mProgressBar.setVisibility(View.GONE);
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                mEmptyTv.setVisibility(View.VISIBLE);
+                mProgressBar.setVisibility(View.GONE);
             }
         });
 
@@ -237,19 +249,37 @@ public class ForecastWeatherFragment extends Fragment implements SwipeRefreshLay
     @Override
     public void onRefresh() {
         mRecyclerView.setVisibility(View.GONE);
+        mEmptyTv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mForecastList.clear();
         mForecastWeatherTodayAdapter.notifyDataSetChanged();
-        jsonParse();
+
+        if(!sharedPreferences.getString("gpsLat", "").equals("")) {
+            jsonParse();
+        }
+        else {
+            mEmptyTv.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
+            mSwipe.setRefreshing(false);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         mRecyclerView.setVisibility(View.GONE);
+        mEmptyTv.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mForecastList.clear();
         mForecastWeatherTodayAdapter.notifyDataSetChanged();
-        jsonParse();
+
+        if(!sharedPreferences.getString("gpsLat", "").equals("")) {
+            jsonParse();
+        }
+        else {
+            mEmptyTv.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
+            mSwipe.setRefreshing(false);
+        }
     }
 }

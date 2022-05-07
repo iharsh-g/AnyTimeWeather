@@ -17,7 +17,6 @@
                 android:id="@+id/frag_forecast_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:text="Today's Weather"
                 android:gravity="center"
                 android:backgroundTint="@color/teal_200"
@@ -30,7 +29,6 @@
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/recycler_view_background"
                 android:layout_below="@id/frag_forecast_button"/>
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -41,4 +39,16 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
+    <TextView
+        android:id="@+id/emptyTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Turn on the location from Settings or select the location form FAVORITES!!"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textAlignment="center"/>
 </RelativeLayout>

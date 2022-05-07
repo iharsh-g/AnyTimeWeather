@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable-nodpi/gradient_rel_layout.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable-nodpi/gradient_rl.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.14375" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable-v21/gradient_2.xml" value="0.1" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable-v21/gradient_5.xml" value="0.1" />
@@ -14,31 +16,38 @@
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/gradient_3.xml" value="0.1" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/gradient_4.xml" value="0.1" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/gradient_5.xml" value="0.1" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/gradient_rel_layout.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/gradient_rl.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_check.xml" value="0.1638888888888889" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_delete.xml" value="0.1574074074074074" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_favorite_border.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ic_without_border_favorite.xml" value="0.25462962962962965" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/menu_search.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/recycler_view_background.xml" value="0.24814814814814815" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/ripple_effect.xml" value="0.2537037037037037" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/tab_background.xml" value="0.176" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/tab_bottom_background.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/drawable/tab_indicator.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/font/arizonia.xml" value="0.2675925925925926" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout-v21/action_bar.xml" value="0.15625" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/action_bar.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_about.xml" value="0.2359375" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_main.xml" value="0.136" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_map.xml" value="0.152" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_search.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_search.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_searched_weather.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/dialog_update.xml" value="0.264" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_current_weather.xml" value="0.2" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_current_weather.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_favorite.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_forecast_weather.xml" value="0.24635416666666668" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_search.xml" value="0.264" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/fragment_search.xml" value="0.2" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_current_weather.xml" value="0.2" />
-        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_database.xml" value="0.2" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_database.xml" value="0.264" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_forecast_hours.xml" value="0.536" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_forecast_today.xml" value="0.176" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/layout/list_item_search.xml" value="0.264" />
@@ -50,9 +59,11 @@
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/menu/action_bar_favorite_fragment.xml" value="0.176" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/menu/action_bar_main_menu.xml" value="0.25" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/menu/action_bar_searched_weather_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/menu/menu_botton_navigation.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Harsh Goyal/AndroidStudioProjects/AnyTimeWeather/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/Harsh Goyal/AppData/Local/Android/Sdk/platforms/android-31/data/res/drawable/list_selector_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Harsh Goyal/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.12132725430597771" />
       </map>
     </option>
   </component>

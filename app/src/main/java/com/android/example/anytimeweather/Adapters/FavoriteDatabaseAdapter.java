@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.view.ActionMode;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
@@ -33,6 +34,7 @@ import com.android.example.anytimeweather.Activities.MainActivity;
 import com.android.example.anytimeweather.Database.FavoriteData;
 import com.android.example.anytimeweather.Database.RoomDB;
 import com.android.example.anytimeweather.Fragments.FavoriteFragment;
+import com.android.example.anytimeweather.Fragments.HomeFragment;
 import com.android.example.anytimeweather.Models.MainViewModel;
 import com.android.example.anytimeweather.R;
 
@@ -42,7 +44,7 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
 
     private ArrayList<FavoriteData> dataList;
     private Activity activity;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferencesDatabase;
     private Context mContext;
 
     private ArrayList<FavoriteData> mSelectedList = new ArrayList<>();
@@ -62,14 +64,14 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
     @NonNull
     @Override
     public FavoriteDatabaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.list_item_database, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_item_database, parent, false);
         mainViewModel = ViewModelProviders.of((FragmentActivity) mContext).get(MainViewModel.class);
         return new FavoriteDatabaseViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteDatabaseViewHolder holder, int position) {
-        sharedPreferences = activity.getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
+        sharedPreferencesDatabase = mContext.getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
         FavoriteData favoriteData = dataList.get(position);
 
         holder.mCapital.setText(favoriteData.getCapital());
@@ -81,7 +83,6 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
                 if (isEnable) {
                     clickItem(holder);
                 } else {
-                    SharedPreferences sharedPreferencesDatabase = mContext.getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferencesDatabase.edit();
                     editor.putString("capitalName", favoriteData.getCapital());
                     editor.putString("countryName", favoriteData.getCountry());
@@ -90,7 +91,8 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
 
                     Toast.makeText(mContext, "Weather set for " + favoriteData.getCapital(), Toast.LENGTH_SHORT).show();
 
-                    FavoriteFragment fragment = new FavoriteFragment();
+                    HomeFragment fragment = new HomeFragment();
+                    MainActivity.mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_home);
                     ((MainActivity) mContext).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.frag_container, fragment, "Restart Fragment")
                             .addToBackStack(null)
@@ -158,11 +160,10 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
                                         public void onClick(DialogInterface dialog, int which) {
 
                                             for (FavoriteData data : mSelectedList) {
-                                                SharedPreferences sharedPreferences1 = mContext.getSharedPreferences("prefDatabase", Context.MODE_PRIVATE);
                                                 database = RoomDB.getDatabase(mContext);
 
-                                                if (sharedPreferences1.getInt("locId", -1) == data.getLocationId()) {
-                                                    SharedPreferences.Editor editor = sharedPreferences1.edit();
+                                                if (sharedPreferencesDatabase.getInt("locId", -1) == data.getLocationId()) {
+                                                    SharedPreferences.Editor editor = sharedPreferencesDatabase.edit();
                                                     editor.putString("capitalName", "");
                                                     editor.putString("countryName", "");
                                                     editor.putInt("locId", -1);
@@ -218,7 +219,7 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
                         }
                     };
 
-                    mActionMode = activity.startActionMode(callback);
+                    mActionMode = ((AppCompatActivity) activity).startSupportActionMode(callback);
                 } else {
                     clickItem(holder);
                 }
@@ -226,12 +227,6 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
                 return true;
             }
         });
-
-        if (sharedPreferences.getInt("locId", -1) == favoriteData.getLocationId()) {
-            holder.mRelativeLayout.setBackgroundColor(Color.RED);
-        } else {
-            holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(activity, R.drawable.gradient_5));
-        }
 
         if (holder.getAdapterPosition() > lastPos) {
             Animation animation = AnimationUtils.loadAnimation(activity, R.anim.animation_1);
@@ -241,10 +236,15 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
 
         if (isSelectAll) {
             holder.mIv.setVisibility(View.VISIBLE);
-            holder.itemView.setBackgroundColor(Color.LTGRAY);
+            holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(activity, R.drawable.gradient_2));
         } else {
             holder.mIv.setVisibility(View.GONE);
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+
+            if (sharedPreferencesDatabase.getInt("locId", -1) == favoriteData.getLocationId()) {
+                holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.gradient_rel_layout));
+            } else {
+                holder.mRelativeLayout.setBackground(ContextCompat.getDrawable(mContext, R.drawable.gradient_5));
+            }
         }
     }
 
@@ -261,6 +261,11 @@ public class FavoriteDatabaseAdapter extends RecyclerView.Adapter<FavoriteDataba
             mSelectedList.remove(data);
         }
         mainViewModel.setString(String.valueOf(mSelectedList.size()));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     @Override
